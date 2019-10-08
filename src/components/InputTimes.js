@@ -16,21 +16,33 @@ export default class InputTimes extends Component{
         })
     }
 
+    handleOnSubmit(event){
+        event.preventDefault()
+        this.props.
+        this.setState({
+            clockIn: '',
+            clockOut: ''
+        })
+    }
+
     render(){
         return(
-            <React.Fragment>
-                <span>01</span>
-                <label>Clock In</label>
-                <input type="time" name="clockIn"placeholder="Clock In" class="clockIn" onChange={(event) => this.handleOnChange(event)} />
-                <label>Clock Out</label>
-                <input type="time" name="clockOut" placeholder="Clock Out" class="clockOut" onChange={(event) => this.handleOnChange(event)} />
+            <div className="item">
+           
+                <form>
+                    <span>01</span>
+                    <label>Clock In</label>
+                    <input type="time" name="clockIn"placeholder="Clock In" class="clockIn" onChange={(event) => this.handleOnChange(event)} />
+                    <label>Clock Out</label>
+                    <input type="time" name="clockOut" placeholder="Clock Out" class="clockOut" onChange={(event) => this.handleOnChange(event)} />
 
-            <div>
-                <AddButton />
-                <UpdateButton />
-                <DeleteButton />
-            </div>
-            </React.Fragment>
+                    <div>
+                        <AddButton />
+                        <UpdateButton />
+                        <DeleteButton />
+                    </div>
+                </form>
+           </div>
         )
     }   
 }
