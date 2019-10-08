@@ -1,5 +1,6 @@
 import React from 'react'
 
-const AddButton = () => {
-    
-}
+const AddButton = props => <button onClick={() => props.add(...)}>ADD</button>
+
+export default AddButton
+
