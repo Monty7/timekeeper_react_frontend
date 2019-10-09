@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import AddButton from '../butons/AddButton'
-import UpdateButton from '../buttons/UpdateButton'
-import DeleteButton from '../buttons/DeleteButton'
+import AddButton from './buttons/AddButton'
+import UpdateButton from './buttons/UpdateButton'
+import DeleteButton from './buttons/DeleteButton'
 
 export default class InputTimes extends Component{
     state = {
@@ -18,7 +18,7 @@ export default class InputTimes extends Component{
 
     handleOnSubmit(event){
         event.preventDefault()
-        this.props.
+      //  this.props.
         this.setState({
             clockIn: '',
             clockOut: ''
@@ -30,7 +30,7 @@ export default class InputTimes extends Component{
             <div className="item">
            
                 <form>
-                    <span>01</span>
+                    <span>{this.props.day}</span>
                     <label>Clock In</label>
                     <input type="time" name="clockIn"placeholder="Clock In" class="clockIn" onChange={(event) => this.handleOnChange(event)} />
                     <label>Clock Out</label>

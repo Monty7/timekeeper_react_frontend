@@ -1,5 +1,5 @@
 import React from 'react'
 
-const DeleteButton = props => <button onClick={() => props.delete(...)}>DELETE</button>
-
+const DeleteButton = props => <button>DELETE</button>
+// onClick={() => props.delete(...)}
 export default DeleteButton

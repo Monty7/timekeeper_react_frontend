@@ -3,22 +3,23 @@ import React, {Component} from 'react'
 export default class LoginForm extends Component{
 
     state = {
-        signIn: ''
+        login: '',
+        logout: ''
     }
 
     handleOnChange(event){
         this.setState({
-            signIn: event.target.value
+            login: event.target.value
         })
     }
     
     handleSubmit(event){
         event.preventDefault()
         this.setState({
-            signIn: ''
+            login: ''
         })
     }
-    
+
 render(){
     return(
         <form onSubmit={(event) => this.handleSubmit(event) }>
