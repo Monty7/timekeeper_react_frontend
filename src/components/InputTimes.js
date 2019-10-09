@@ -28,7 +28,7 @@ export default class InputTimes extends Component{
     render(){
         return(
             <div className="item">
-           
+                <h1>Time Keeper</h1>
                 <form>
                     <span>{this.props.day}</span>
                     <label>Clock In</label>

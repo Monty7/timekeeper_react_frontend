@@ -10,5 +10,5 @@ h1 {
 
 #sign_up_in {
     display: flex;
-    flex-direction: row-reverse;
+  /*  flex-direction: row-reverse;*/
 }

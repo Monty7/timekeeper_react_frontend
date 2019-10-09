@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import LoginButton from './buttons/LoginButton'
 
 export default class LoginForm extends Component{
 
@@ -26,7 +27,8 @@ render(){
             <div id="sign_up_in">
             <div id="sign_up">
                 <input type="text" name="username" id="sign_in_user" placeholder="Log In" onChange={(event) => this.handleOnChange(event)} />
-                <input type="submit" id="submit_user" />
+                <LoginButton id="submit_user" />
+           
             </div>
             </div>
         </form>
