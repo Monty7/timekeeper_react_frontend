@@ -6,6 +6,9 @@ import BASEURL from '../baseUrl'
 //Component Did mount to fetch to the database
 
 class CalendarContainer extends Component{
+    componentWillMount() {
+        this.props.fetchUsers()
+    }
     renderInputs(){
         let inputs = []
         for(let i = 1; i <= 31; i++ ){
@@ -14,7 +17,7 @@ class CalendarContainer extends Component{
         return inputs
     }
 
-    render(){
+    render(){ 
         return(
         <div className="container">
             {this.renderInputs()}

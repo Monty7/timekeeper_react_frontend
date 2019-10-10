@@ -12,7 +12,7 @@ import BASEURL from "../baseUrl"
 
 export const fetchUser = userFromState => {
     return dispatch => {
-        fetch(BASEURL, {
+        fetch(BASEURL+'/login', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(userFromState)

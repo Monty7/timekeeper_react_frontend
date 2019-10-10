@@ -10,7 +10,7 @@ export default class InputTimes extends Component{
     }
 
     handleOnChange(event){
-        this.setState({
+        this.setState({ 
             clockIn: event.target.value,
             clockOut: event.target.value
         })
