@@ -11,13 +11,14 @@ import BASEURL from "../baseUrl"
 //7. Take that action from props and make a new handler for the form/submit button that utilizes the action to change Redux store's state
 
 export const fetchUser = userFromState => {
+    console.log(userFromState)
     return dispatch => {
-        fetch(BASEURL+'/login', {
+        fetch(BASEURL+'/users', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(userFromState)
         })
         .then(resp => resp.json())
-        .then(user => dispatch({type: 'FETCH_USER', payload: user}))
+        .then(username => dispatch({type: 'FETCH_USER', payload: username})) //goes to the reducer
     }
 }
