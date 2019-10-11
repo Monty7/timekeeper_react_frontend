@@ -7,8 +7,46 @@ import BASEURL from '../baseUrl'
 
 class CalendarContainer extends Component{
     // componentWillMount() {
-    //     this.props.fetchUsers()
+    //     
     // }
+
+    state = {
+        userId: null,
+        clockIn: '',
+        clockOut: '',
+        name: ''
+    }
+
+    checkForUser(){
+        console.log(this.props)
+        //if redux store has logged in user object
+        //if redux store has no logged in user object but localStorage does 
+        //if redux store has no loggied in user object and localStorage doesn't either
+        let userID = localStorage.getItem('loggedInUserID');
+        console.log(userID)
+        if(userID != 'undefined'){
+            console.log(userID)
+    
+            fetch(`${BASEURL}/users/${userID}`)
+            .then(function(res){
+                return res.json();
+            })
+            .then(function(data){
+                console.log(data)
+                this.setState({userID: data.id})
+                // let user = new User(data)
+                
+                // user.login();
+            })
+            .catch(function(err){
+                console.log(err);
+            })
+    
+        }
+    }
+
+
+    
     renderInputs(){
         let inputs = []
         for(let i = 1; i <= 31; i++ ){

@@ -5,16 +5,20 @@ import {fetchUser} from '../actions/login'
 import { connect } from 'react-redux'
 import { withRouter } from "react-router-dom"
 
-import { statement } from '@babel/template'
+
 
 class LoginForm extends Component{
-
+    // componentDidMount(){
+    //     this.checkForUser()
+    // }
 
     state = {
         name: ''
+//
     }
 
-        handleOnChange(event){
+
+    handleOnChange(event){
       
         this.setState({
             [event.target.name]: event.target.value
