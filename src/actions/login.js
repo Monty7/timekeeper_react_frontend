@@ -1,4 +1,5 @@
 import BASEURL from "../baseUrl"
+import { createBrowserHistory } from 'history'
 //GOAL: Have a user log in
 //-Write out a controlled form
 //1. Write out our input fields 
@@ -10,7 +11,7 @@ import BASEURL from "../baseUrl"
 //6. mapDispatchToProps our new Action
 //7. Take that action from props and make a new handler for the form/submit button that utilizes the action to change Redux store's state
 
-export const fetchUser = userFromState => {
+export const fetchUser = (userFromState, history) => {
     console.log(userFromState)
     return dispatch => {
         fetch(BASEURL+'/users', {
@@ -19,6 +20,7 @@ export const fetchUser = userFromState => {
             body: JSON.stringify(userFromState)
         })
         .then(resp => resp.json())
-        .then(username => dispatch({type: 'FETCH_USER', payload: username})) //goes to the reducer
+        .then(username => dispatch({type: 'FETCH_USER', payload: username}, history.push('/calendar'))) //goes to the reducer
+     //   .then(() => createBrowserHistory.push('/calendar'))
     }
 }

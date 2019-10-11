@@ -6,13 +6,13 @@ import BASEURL from '../baseUrl'
 //Component Did mount to fetch to the database
 
 class CalendarContainer extends Component{
-    componentWillMount() {
-        this.props.fetchUsers()
-    }
+    // componentWillMount() {
+    //     this.props.fetchUsers()
+    // }
     renderInputs(){
         let inputs = []
         for(let i = 1; i <= 31; i++ ){
-            inputs.push(<InputTimes day={i}/>)
+            inputs.push(<InputTimes day={i} key={i}/>)
         }        
         return inputs
     }

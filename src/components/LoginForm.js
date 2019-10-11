@@ -1,19 +1,20 @@
 import React, {Component} from 'react'
 import LoginButton from './buttons/LoginButton'
 import Header from './Header'
+import {fetchUser} from '../actions/login'
 import { connect } from 'react-redux'
-import { fetchUser } from '../actions/login'
+import { withRouter } from "react-router-dom"
+
 import { statement } from '@babel/template'
 
 class LoginForm extends Component{
-    // componentWillMount(){
-    //     this.props.fetchUser()
-    // }
+
+
     state = {
         name: ''
     }
 
-    handleOnChange(event){
+        handleOnChange(event){
       
         this.setState({
             [event.target.name]: event.target.value
@@ -26,10 +27,12 @@ class LoginForm extends Component{
         //     user: ''
         // })
        // console.log(this.state.user)
-        this.props.fetchUser({name: this.state.name})
+        this.props.fetchUser({name: this.state.name}, this.props.history)
     }
 
 render(){
+    console.log(this.props);
+    
     return(
         <div>
             <Header />
@@ -46,9 +49,9 @@ render(){
         )
     }
 }
+
 const mapStateToProps = (state) => ({
     user: state.user //user is the key from the reducer
     //will be able to utilize this.props.user to display in the form
 })
-
-export default connect(mapStateToProps, {fetchUser})(LoginForm)
+export default connect(mapStateToProps, {fetchUser})(withRouter(LoginForm))
