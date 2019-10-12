@@ -4,13 +4,15 @@ import Header from './Header'
 import {fetchUser} from '../actions/login'
 import { connect } from 'react-redux'
 import { withRouter } from "react-router-dom"
-
+import {checkForUser} from '../actions/login'
 
 
 class LoginForm extends Component{
-    // componentDidMount(){
-    //     this.checkForUser()
-    // }
+    componentDidMount(){
+       // console.log(this.props)
+       // console.log(localStorage.getItem('loggedInUserID'))
+        this.props.checkForUser(this.props.history)
+    }
 
     state = {
         name: ''
@@ -58,4 +60,4 @@ const mapStateToProps = (state) => ({
     user: state.user //user is the key from the reducer
     //will be able to utilize this.props.user to display in the form
 })
-export default connect(mapStateToProps, {fetchUser})(withRouter(LoginForm))
+export default connect(mapStateToProps, {fetchUser, checkForUser})(withRouter(LoginForm))

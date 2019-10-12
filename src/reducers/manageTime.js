@@ -13,6 +13,9 @@ export default function manageTime( state = initialState, action){  //reducers u
         case "DELETE_TIME":
             return state
         
+        case "CHECK_LOGGED_USER":
+            return state
+            
         case "FETCH_USER":
             //console.log('user has been fetch!')
            // console.log(state)

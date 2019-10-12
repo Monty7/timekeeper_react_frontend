@@ -1,50 +1,25 @@
 import React, {Component} from 'react'
 import InputTimes from '../components/InputTimes'
+import TimeTotal from '../components/TimeTotal'
 import { connect } from 'react-redux'
 import BASEURL from '../baseUrl'
+import { checkForUser } from '../actions/login'
 
 //Component Did mount to fetch to the database
 
 class CalendarContainer extends Component{
-    // componentWillMount() {
-    //     
+    componentDidMount() {
+       // console.log(this.props)
+       // console.log(localStorage.getItem('loggedInUserID'))
+        checkForUser()
+    }
+
+    // state = {  //should be from the store instead
+    //     userId: null,
+    //     clockIn: '',
+    //     clockOut: '',
+    //     name: ''
     // }
-
-    state = {
-        userId: null,
-        clockIn: '',
-        clockOut: '',
-        name: ''
-    }
-
-    checkForUser(){
-        console.log(this.props)
-        //if redux store has logged in user object
-        //if redux store has no logged in user object but localStorage does 
-        //if redux store has no loggied in user object and localStorage doesn't either
-        let userID = localStorage.getItem('loggedInUserID');
-        console.log(userID)
-        if(userID != 'undefined'){
-            console.log(userID)
-    
-            fetch(`${BASEURL}/users/${userID}`)
-            .then(function(res){
-                return res.json();
-            })
-            .then(function(data){
-                console.log(data)
-                this.setState({userID: data.id})
-                // let user = new User(data)
-                
-                // user.login();
-            })
-            .catch(function(err){
-                console.log(err);
-            })
-    
-        }
-    }
-
 
     
     renderInputs(){
@@ -58,6 +33,7 @@ class CalendarContainer extends Component{
     render(){ 
         return(
         <div className="container">
+            <TimeTotal />
             {this.renderInputs()}
         </div>
         )
