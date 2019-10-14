@@ -20,13 +20,14 @@ export const fetchUser = (nameObjFromState, history) => {
             body: JSON.stringify(nameObjFromState)
         })
         .then(resp => resp.json())
-        //.then(userObj => console.log(userObj))
-        .then(userObj => dispatch({type: 'FETCH_USER', payload: {userObj, id: localStorage.setItem('loggedInUserID', userObj.id)}}, history.push('/calendar')))
-       
-       // .then(userObj => {console.log(userObj.payload.id)
+        .then(userObj => console.log(userObj))
+       // .then(userObj => dispatch({type: 'FETCH_USER', payload: {userObj, id: localStorage.setItem('loggedInUserID', userObj.id)}}, history.push('/calendar')))
+       //.then(load user times)
+       // .then(userObj => console.log(userObj.payload.id))
       //  .then(userObj => dispatch({type: 'CHECK_LOGGED_USER', payload: localStorage.setItem('loggedInUserID', userObj.payload.id)}));//goes to the reducer
      // .then(localStorage.user = userObj.id) 
     }
+    
 }
 
 export const checkForUser = (history) => {
@@ -44,13 +45,9 @@ export const checkForUser = (history) => {
                 return res.json();
             })
             .then(userObj => {
-              console.log(userObj)
+            //  console.log(userObj)
                 dispatch({type: 'CHECK_LOGGED_USER', payload: {userObj, id: userID}}, history.push('/calendar'))
-               // console.log(data)
-               // this.setState({userID: data.id})
-                // let user = new User(data)
-                
-                // user.login();
+     
             })
             .catch(err => {
                 console.log(err);
@@ -59,4 +56,20 @@ export const checkForUser = (history) => {
     }else{
         return history.push('/')
     }
+}
+
+export const logoutUser = () => {
+    const currentTime = document.querySelector('#currentTime');
+    currentTime.innerText = "";
+
+    const allDateContainers = document.querySelectorAll('.item');
+    allDateContainers.forEach((dateContainer) => {
+        dateContainer.children[2].value = "";
+        dateContainer.children[4].value = "";
+    })
+
+    localStorage.clear();
+
+    let welcomeMessage = document.querySelector('#welcomeUser p');
+    welcomeMessage.innerText = "";
 }

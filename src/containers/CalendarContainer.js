@@ -1,17 +1,19 @@
 import React, {Component} from 'react'
 import InputTimes from '../components/InputTimes'
 import TimeTotal from '../components/TimeTotal'
+import LogoutInput from '../components/LogoutInput'
 import { connect } from 'react-redux'
-import BASEURL from '../baseUrl'
-import { checkForUser } from '../actions/login'
+import {checkForUser} from '../actions/login'
+
 
 //Component Did mount to fetch to the database
 
 class CalendarContainer extends Component{
     componentDidMount() {
-       // console.log(this.props)
+       
        // console.log(localStorage.getItem('loggedInUserID'))
-        checkForUser()
+        this.props.checkForUser(this.props.history) 
+      // console.log(this.props)
     }
 
     // state = {  //should be from the store instead
@@ -19,7 +21,7 @@ class CalendarContainer extends Component{
     //     clockIn: '',
     //     clockOut: '',
     //     name: ''
-    // }
+    // } 
 
     
     renderInputs(){
@@ -31,15 +33,21 @@ class CalendarContainer extends Component{
     }
 
     render(){ 
+        console.log(this.props) //this line is called 3 times in the console - need debugging
         return(
-        <div className="container">
-            <TimeTotal />
-            {this.renderInputs()}
-        </div>
+        <React.Fragment>
+            <LogoutInput nameOfUser={this.props.user} />
+        
+            <div className="container">
+                <TimeTotal />
+                {this.renderInputs()}
+            </div>
+        </React.Fragment>
         )
     }
 }
-//mapStateToProps = 
+const mapStateToProps = (state) => ({
+    user: state.user
+})
 
-export default CalendarContainer
-//connect(mapStateToProps, mapDispatchToProps)
+export default connect(mapStateToProps, {checkForUser})(CalendarContainer)

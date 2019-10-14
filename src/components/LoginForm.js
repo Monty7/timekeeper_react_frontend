@@ -8,16 +8,18 @@ import {checkForUser} from '../actions/login'
 
 
 class LoginForm extends Component{
+    state = {
+        name: ''
+    }
+
     componentDidMount(){
        // console.log(this.props)
        // console.log(localStorage.getItem('loggedInUserID'))
         this.props.checkForUser(this.props.history)
+       // console.log(this.props)
+      // console.log("I'm mounted!!!")
     }
 
-    state = {
-        name: ''
-//
-    }
 
 
     handleOnChange(event){
@@ -37,7 +39,8 @@ class LoginForm extends Component{
     }
 
 render(){
-    console.log(this.props);
+    //console.log("I'm rendered component");
+   // console.log(this.props);
     
     return(
         <div>

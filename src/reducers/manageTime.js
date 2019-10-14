@@ -14,11 +14,13 @@ export default function manageTime( state = initialState, action){  //reducers u
             return state
         
         case "CHECK_LOGGED_USER":
-            return state
-            
+           // console.log(state)
+           // console.log({...state, user: action.payload}) //{type: 'CHECK_LOGGED_USER', payload: {userObj, id: userID}}
+            return {...state, user: action.payload}
+
         case "FETCH_USER":
             //console.log('user has been fetch!')
-           // console.log(state)
+            console.log(state)
             return {...state, user: action.payload}  //makes a copy of state and modify the user value inside the copy. this comes from the login action returned by the fetch
                                 //{type: 'FETCH_USER', payload: user}
         default:

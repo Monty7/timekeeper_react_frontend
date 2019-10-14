@@ -1,6 +1,10 @@
-.container, .calendar {
+.container, .calendar{
     display: inline-flex;
     flex-wrap: wrap;
+}
+header {
+    display: flex;
+    align-content: stretch;
 }
 
 h1 {
