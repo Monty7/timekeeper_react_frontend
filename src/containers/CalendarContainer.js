@@ -10,10 +10,9 @@ import {checkForUser} from '../actions/login'
 
 class CalendarContainer extends Component{
     componentDidMount() {
-       
+      //  this.props.checkForUser(this.props.history) 
        // console.log(localStorage.getItem('loggedInUserID'))
-        this.props.checkForUser(this.props.history) 
-      // console.log(this.props)
+      console.log(this.props)
     }
 
     // state = {  //should be from the store instead
@@ -34,6 +33,7 @@ class CalendarContainer extends Component{
 
     render(){ 
         console.log(this.props) //this line is called 3 times in the console - need debugging
+
         return(
         <React.Fragment>
             <LogoutInput nameOfUser={this.props.user} />

@@ -20,8 +20,11 @@ export const fetchUser = (nameObjFromState, history) => {
             body: JSON.stringify(nameObjFromState)
         })
         .then(resp => resp.json())
-        .then(userObj => console.log(userObj))
-       // .then(userObj => dispatch({type: 'FETCH_USER', payload: {userObj, id: localStorage.setItem('loggedInUserID', userObj.id)}}, history.push('/calendar')))
+       .then(userObj => {
+           console.log(userObj)
+           return userObj
+       })
+        .then(userObj => dispatch({type: 'FETCH_USER', payload: {userObj, id: localStorage.setItem('loggedInUserID', userObj.id)}}, history.push('/calendar')))
        //.then(load user times)
        // .then(userObj => console.log(userObj.payload.id))
       //  .then(userObj => dispatch({type: 'CHECK_LOGGED_USER', payload: localStorage.setItem('loggedInUserID', userObj.payload.id)}));//goes to the reducer
@@ -30,32 +33,26 @@ export const fetchUser = (nameObjFromState, history) => {
     
 }
 
-export const checkForUser = (history) => {
+export const checkForUser = (userID, history) => {
+    console.log("CHECKING FOR USER")
+    return dispatch => {
+        fetch(`${BASEURL}/users/${userID}`)
+        .then(res => {
+            return res.json();
+        })
+        .then(userObj => {
+            history.push('/calendar')
+            console.log(history)
+            return dispatch({type: 'CHECK_LOGGED_USER', payload: {userObj}})
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
     //console.log(this.state)
     //if redux store has logged in user object
     //if redux store has no logged in user object but localStorage does 
     //if redux store has no loggied in user object and localStorage doesn't either
-    let userID = localStorage.getItem('loggedInUserID');
-    
-    if(userID != 'undefined'){
-      // console.log(userID)
-        return dispatch => {
-            fetch(`${BASEURL}/users/${userID}`)
-            .then(res => {
-                return res.json();
-            })
-            .then(userObj => {
-            //  console.log(userObj)
-                dispatch({type: 'CHECK_LOGGED_USER', payload: {userObj, id: userID}}, history.push('/calendar'))
-     
-            })
-            .catch(err => {
-                console.log(err);
-            })
-        }
-    }else{
-        return history.push('/')
-    }
 }
 
 export const logoutUser = () => {

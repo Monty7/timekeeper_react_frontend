@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 const LogoutInput = () => {
-    //console.log(this.props.nameOfUser)
+    //console.log(props.nameOfUser)
     return (
         
         <div id="welcomeUser">

@@ -12,13 +12,7 @@ class LoginForm extends Component{
         name: ''
     }
 
-    componentDidMount(){
-       // console.log(this.props)
-       // console.log(localStorage.getItem('loggedInUserID'))
-        this.props.checkForUser(this.props.history)
-       // console.log(this.props)
-      // console.log("I'm mounted!!!")
-    }
+ 
 
 
 
