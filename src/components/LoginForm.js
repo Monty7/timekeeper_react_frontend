@@ -12,10 +12,6 @@ class LoginForm extends Component{
         name: ''
     }
 
- 
-
-
-
     handleOnChange(event){
       
         this.setState({
@@ -57,4 +53,4 @@ const mapStateToProps = (state) => ({
     user: state.user //user is the key from the reducer
     //will be able to utilize this.props.user to display in the form
 })
-export default connect(mapStateToProps, {fetchUser, checkForUser})(withRouter(LoginForm))
+export default connect(mapStateToProps, {fetchUser})(withRouter(LoginForm))

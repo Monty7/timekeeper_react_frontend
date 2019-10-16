@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import CalendarContainer from './containers/CalendarContainer'
 import LoginFormContainer from './containers/LoginFormContainer'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { withRouter } from "react-router-dom"
 import {checkForUser} from './actions/login'
 import { connect } from 'react-redux'
