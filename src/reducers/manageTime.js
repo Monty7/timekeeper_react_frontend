@@ -23,6 +23,9 @@ export default function manageTime( state = initialState, action){  //reducers u
             console.log(state)
             return {...state, user: action.payload}  //makes a copy of state and modify the user value inside the copy. this comes from the login action returned by the fetch
                                 //{type: 'FETCH_USER', payload: user}
+
+       case "LOGOUT_USER":
+           return initialState
         default:
             return state
     }

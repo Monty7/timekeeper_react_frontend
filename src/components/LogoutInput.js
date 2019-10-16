@@ -1,16 +1,25 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { withRouter } from "react-router-dom"
+import { connect } from 'react-redux'
+import {logoutUser } from '../actions/login'
 
 const LogoutInput = (props) => {
-    console.log(props.user1)
+    console.log(props.user)
     //debugger
     return (
-        
         <div id="welcomeUser">
-            <p></p>
-            <Link to="/logout" id="logoutLink" replace>logout</Link>
+            {/* the && is like  aternary operator but just for two things. If the first is true, then do the second. Otherwise do nothing*/}
+            <p>{props.user && props.user.name}</p>
+            <button onClick={() => props.logoutUser(props.history)}>logout</button>
         </div>
     )
 }
 
-export default LogoutInput
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+} 
+
+export default connect(mapStateToProps, {logoutUser})(withRouter(LogoutInput))

@@ -31,13 +31,14 @@ class CalendarContainer extends Component{
         return inputs
     }
 
+
+
     render(){ 
         console.log(this.props.user2) //this line is called 2 times in the console - need debugging
 
         return(
         <React.Fragment>
-            <LogoutInput user1={this.props.user2} />
-        
+            <LogoutInput/>
             <div className="container">
                 <TimeTotal />
                 {this.renderInputs()}
@@ -47,7 +48,7 @@ class CalendarContainer extends Component{
     }
 }
 const mapStateToProps = (state) => ({
-    user2: state.user
+    user: state.user,
 })
 
 export default connect(mapStateToProps)(CalendarContainer)
