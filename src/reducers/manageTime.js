@@ -5,7 +5,8 @@ let initialState = {
 export default function manageTime( state = initialState, action){  //reducers updates the state sent from the actions
     switch(action.type){
         case "ADD_TIME":
-            return state
+         //   console.log(state)
+            return {...state, user_times: action.payload}
         
         case "UPDATE_TIME":
             return state

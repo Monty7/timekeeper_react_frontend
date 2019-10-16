@@ -15,13 +15,6 @@ class CalendarContainer extends Component{
     //   console.log(this.props)
     // }
 
-    // state = {  //should be from the store instead
-    //     userId: null,
-    //     clockIn: '',
-    //     clockOut: '',
-    //     name: ''
-    // } 
-
     
     renderInputs(){
         let inputs = []
@@ -34,7 +27,7 @@ class CalendarContainer extends Component{
 
 
     render(){ 
-        console.log(this.props.user2) //this line is called 2 times in the console - need debugging
+        console.log(this.props.user)
 
         return(
         <React.Fragment>

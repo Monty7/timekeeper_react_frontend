@@ -13,12 +13,13 @@ import {addTime} from '../actions/addTimes'
 //Alternatives: send back the entire user obj from the api and reset the user obj in the redux that way 
 
 
-export default class InputTimes extends Component{
+class InputTimes extends Component{
 
 
     state = {
         clockIn: '',
-        clockOut: ''
+        clockOut: '',
+        capturedDate: this.props.day
     }
 
     handleOnChange(event){
@@ -27,24 +28,17 @@ export default class InputTimes extends Component{
         }, () => console.log(this.state))
     }
 
-    // handleOnSubmit(event){
-    //     event.preventDefault()
-    //   //  this.props.
-    //     // this.setState({
-    //     //     clockIn: '',
-    //     //     clockOut: ''
-    //     // })
-    // }
     handleOnAdd(event){
-        this.props.addTime()
+        event.preventDefault()
+        this.props.addTime(this.props.user.id, this.state.clockIn, this.state.clockOut, this.state.capturedDate)
     }
 
-    handleOnDelete(){
-
+    handleOnDelete(event){
+        event.preventDefault()
     }
 
-    handleOnUpdate(){
-
+    handleOnUpdate(event){
+        event.preventDefault()
     }
 
     render(){
@@ -59,12 +53,19 @@ export default class InputTimes extends Component{
                     <input type="time" name="clockOut" placeholder="Clock Out" className="clockOut" onChange={(event) => this.handleOnChange(event)} />
 
                     <div>
-                        <AddButton onClick={this.handleOnAdd} />
-                        <UpdateButton onClick={this.handleOnUpdate}/>
-                        <DeleteButton onClick={this.handleOnDelete}/>
+                        <AddButton addTimes={(event) => this.handleOnAdd(event)} />
+                        <UpdateButton updateTimes={this.handleOnUpdate}/>
+                        <DeleteButton deleteTimes={this.handleOnDelete}/>
                     </div>
                 </form>
            </div>
         )
     }   
 }
+
+const mapStateToProps = (state) =>  console.log(state)(
+   
+       {user: state.user}
+)
+
+export default connect(mapStateToProps, {addTime})(InputTimes)
