@@ -2,11 +2,12 @@ let initialState = {
     user: null
 }
 
-export default function manageTime( state = initialState, action){  //reducers updates the state sent from the actions
+export default function manageTime( state = initialState, action){
+    console.log(state, action)  //reducers updates the state sent from the actions
     switch(action.type){
         case "ADD_TIME":
-         //   console.log(state)
-            return {...state, user_times: action.payload}
+            console.log(state)
+            return {user: action.payload}
         
         case "UPDATE_TIME":
             return state
@@ -17,16 +18,17 @@ export default function manageTime( state = initialState, action){  //reducers u
         case "CHECK_LOGGED_USER":
            // console.log(state)
            // console.log({...state, user: action.payload}) //{type: 'CHECK_LOGGED_USER', payload: {userObj, id: userID}}
-            return {...state, user: action.payload}
+            return {user: action.payload}
 
         case "FETCH_USER":
             //console.log('user has been fetch!')
-            console.log(state)
-            return {...state, user: action.payload}  //makes a copy of state and modify the user value inside the copy. this comes from the login action returned by the fetch
+           // console.log(state)
+            return {user: action.payload}  //makes a copy of state and modify the user value inside the copy. this comes from the login action returned by the fetch
                                 //{type: 'FETCH_USER', payload: user}
 
        case "LOGOUT_USER":
            return initialState
+
         default:
             return state
     }

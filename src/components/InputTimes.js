@@ -24,6 +24,51 @@ class InputTimes extends Component{
         totalTime: null
     }
 
+    // componentDidUpdate(prevProps){
+    //     console.log(this.props)
+    //     if (this.props.user){
+           
+    //         let foundDay = this.props.user.user_times.find(ut => parseInt(ut.date_of_times) === this.state.capturedDate)  //compare day from props to day from state
+    //         //checking to see if the user object in props has a user_time that matches this component's day 
+     
+    //         if (foundDay && foundDay.clock_in.slice(11, 16) !== this.state.clockIn) {
+    //        console.log("CHANGING")
+    //             //calculate the total time here
+    //             //let totalTime = logic here
+    //         this.setState(prevState => {
+    //             return {
+    //                 ...prevState, 
+    //             clockIn: foundDay.clock_in.slice(11, 16),
+    //             clockOut: foundDay.clock_out.slice(11, 16)
+    //             // totalTime: foundDay.totalTime
+    //             }
+    //           }, () => console.log(this.state))
+    //         }
+    //     }
+    // }
+
+    static getDerivedStateFromProps(props, state) {
+        
+        if (props.user){
+           
+            let foundDay = props.user.user_times.find(ut => parseInt(ut.date_of_times) === state.capturedDate)  //compare day from props to day from state
+            //checking to see if the user object in props has a user_time that matches this component's day 
+            if (foundDay && foundDay.clock_in.slice(11, 16) !== state.clockIn) {
+                //calculate the total time here
+                //let totalTime = logic here
+                console.log(foundDay.clock_in.slice(11, 16))
+            return {
+                ...state, 
+                clockIn: foundDay.clock_in.slice(11, 16),
+                clockOut: foundDay.clock_out.slice(11, 16)
+                // totalTime: foundDay.totalTime
+              }
+            }
+            return null;
+        }
+    }
+        
+
     handleOnChange(event){
         this.setState({ 
             [event.target.name]: event.target.value,
@@ -46,15 +91,16 @@ class InputTimes extends Component{
     }
 
     render(){
+    
         return(
             <div className="item">
                
                 <form>
                     <span>{this.props.day}</span>
                     <label>Clock In</label>
-                    <input type="time" name="clockIn" placeholder="Clock In" className="clockIn" onChange={(event) => this.handleOnChange(event)} />
+                    <input type="time" value={this.state.clockIn} name="clockIn" placeholder="Clock In" className="clockIn" onChange={(event) => this.handleOnChange(event)} />
                     <label>Clock Out</label>
-                    <input type="time" name="clockOut" placeholder="Clock Out" className="clockOut" onChange={(event) => this.handleOnChange(event)} />
+                    <input type="time" value={this.state.clockOut} name="clockOut" placeholder="Clock Out" className="clockOut" onChange={(event) => this.handleOnChange(event)} />
 
                     <div>
                         <AddButton addTimes={(event) => this.handleOnAdd(event)} />
@@ -67,9 +113,10 @@ class InputTimes extends Component{
     }   
 }
 
-const mapStateToProps = (state) =>  (
-   
-       {user: state.user}
-)
+const mapStateToProps = (state) =>  {
+       return {
+           user: state.user
+        }
+    }
 
 export default connect(mapStateToProps, {addTime, deleteTime})(InputTimes)

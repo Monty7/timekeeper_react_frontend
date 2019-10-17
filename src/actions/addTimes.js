@@ -25,12 +25,12 @@ export const addTime = (userID, clock_in, clock_out, captured_date) => {
             console.log(res)
             return res.json();
         })
-        .then((timesObj) => {
-            console.log(timesObj)
-            if (timesObj.err_message){
-                alert(timesObj.err_message)
+        .then((userObj) => {
+            console.log(userObj)
+            if (userObj.err_message){
+                alert(userObj.err_message)
             } else {
-                return dispatch({type: 'ADD_TIME', payload: timesObj})
+                return dispatch({type: 'ADD_TIME', payload: userObj})
             // calcTime(data) //Need to add the function for this
             
         }
