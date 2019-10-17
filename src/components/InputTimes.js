@@ -4,7 +4,8 @@ import UpdateButton from './buttons/UpdateButton'
 import DeleteButton from './buttons/DeleteButton'
 import { connect } from 'react-redux'
 import {addTime} from '../actions/addTimes'
-
+import {deleteTime} from '../actions/deleteTimes'
+import {updateTime} from '../actions/updateTimes'
 
 //GOAL: Create a user time 
 //1. Change local state with user input to collect times
@@ -19,7 +20,8 @@ class InputTimes extends Component{
     state = {
         clockIn: '',
         clockOut: '',
-        capturedDate: this.props.day
+        capturedDate: this.props.day,
+        totalTime: null
     }
 
     handleOnChange(event){
@@ -35,10 +37,12 @@ class InputTimes extends Component{
 
     handleOnDelete(event){
         event.preventDefault()
+        this.props.deleteTime(this.props.user.id, this.state.clockIn, this.state.clockOut, this.state.capturedDate)
     }
 
     handleOnUpdate(event){
         event.preventDefault()
+        this.props.updateTime(this.props.user.id, this.state.clockIn, this.state.clockOut, this.state.capturedDate)       
     }
 
     render(){
@@ -63,9 +67,9 @@ class InputTimes extends Component{
     }   
 }
 
-const mapStateToProps = (state) =>  console.log(state)(
+const mapStateToProps = (state) =>  (
    
        {user: state.user}
 )
 
-export default connect(mapStateToProps, {addTime})(InputTimes)
+export default connect(mapStateToProps, {addTime, deleteTime})(InputTimes)
