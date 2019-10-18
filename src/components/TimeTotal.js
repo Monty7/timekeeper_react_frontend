@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TimeTotal = () => {
+const TimeTotal = (props) => {
     return (
         <header>
             <h3>Calculate time in a month

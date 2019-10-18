@@ -24,29 +24,6 @@ class InputTimes extends Component{
         totalTime: null
     }
 
-    // componentDidUpdate(prevProps){
-    //     console.log(this.props)
-    //     if (this.props.user){
-           
-    //         let foundDay = this.props.user.user_times.find(ut => parseInt(ut.date_of_times) === this.state.capturedDate)  //compare day from props to day from state
-    //         //checking to see if the user object in props has a user_time that matches this component's day 
-     
-    //         if (foundDay && foundDay.clock_in.slice(11, 16) !== this.state.clockIn) {
-    //        console.log("CHANGING")
-    //             //calculate the total time here
-    //             //let totalTime = logic here
-    //         this.setState(prevState => {
-    //             return {
-    //                 ...prevState, 
-    //             clockIn: foundDay.clock_in.slice(11, 16),
-    //             clockOut: foundDay.clock_out.slice(11, 16)
-    //             // totalTime: foundDay.totalTime
-    //             }
-    //           }, () => console.log(this.state))
-    //         }
-    //     }
-    // }
-
     static getDerivedStateFromProps(props, state) {
         
         if (props.user){
@@ -104,8 +81,8 @@ class InputTimes extends Component{
 
                     <div>
                         <AddButton addTimes={(event) => this.handleOnAdd(event)} />
-                        <UpdateButton updateTimes={this.handleOnUpdate}/>
-                        <DeleteButton deleteTimes={this.handleOnDelete}/>
+                        <UpdateButton updateTimes={(event) => this.handleOnUpdate(event)}/>
+                        <DeleteButton deleteTimes={(event) => this.handleOnDelete(event)}/>
                     </div>
                 </form>
            </div>
@@ -119,4 +96,4 @@ const mapStateToProps = (state) =>  {
         }
     }
 
-export default connect(mapStateToProps, {addTime, deleteTime})(InputTimes)
+export default connect(mapStateToProps, {addTime, updateTime, deleteTime})(InputTimes)

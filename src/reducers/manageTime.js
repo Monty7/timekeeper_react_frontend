@@ -13,7 +13,7 @@ export default function manageTime( state = initialState, action){
             return state
 
         case "DELETE_TIME":
-            return state
+            return {user: action.payload}
         
         case "CHECK_LOGGED_USER":
            // console.log(state)
