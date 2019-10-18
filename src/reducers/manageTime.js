@@ -10,7 +10,7 @@ export default function manageTime( state = initialState, action){
             return {user: action.payload}
         
         case "UPDATE_TIME":
-            return state
+            return {user: action.payload}
 
         case "DELETE_TIME":
             return {user: action.payload}
