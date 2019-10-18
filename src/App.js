@@ -5,16 +5,13 @@ import { Route } from 'react-router-dom';
 import { withRouter } from "react-router-dom"
 import {checkForUser} from './actions/login'
 import { connect } from 'react-redux'
-//import { createBrowserHistory } from 'history'
 
 import './styles/App.css'
 import './styles/flexbox.css'
 
-//const history = createBrowserHistory()
+
 class App extends Component {
     componentDidMount(){
-        // console.log(this.props)
-        // console.log(localStorage.getItem('loggedInUserID'))
  
         let userID = localStorage.getItem('loggedInUserID');
      

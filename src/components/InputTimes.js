@@ -49,7 +49,7 @@ class InputTimes extends Component{
             if (foundDay && foundDay.clock_in.slice(11, 16) !== this.state.clockIn) {
                 //calculate the total time here
                 //let totalTime = logic here
-                console.log(foundDay.clock_in.slice(11, 16))
+               // console.log(foundDay.clock_in.slice(11, 16))
                 return foundDay
             }
         }
@@ -72,30 +72,6 @@ class InputTimes extends Component{
     }
     
 
-
-
-    // static getDerivedStateFromProps(props, state) {
-        
-    //     if (props.user){
-           
-    //         let foundDay = props.user.user_times.find(ut => parseInt(ut.date_of_times) === state.capturedDate)  //compare day from props to day from state
-    //         //checking to see if the user object in props has a user_time that matches this component's day 
-    //         if (foundDay && foundDay.clock_in.slice(11, 16) !== state.clockIn) {
-    //             //calculate the total time here
-    //             //let totalTime = logic here
-    //             console.log(foundDay.clock_in.slice(11, 16))
-    //         return {
-    //             ...state, 
-    //             clockIn: foundDay.clock_in.slice(11, 16),
-    //             clockOut: foundDay.clock_out.slice(11, 16)
-    //             // totalTime: foundDay.totalTime
-    //           }
-    //         }
-    //         return null;
-    //     }
-    // }
-        
-
     handleOnChange(event){
         this.setState({ 
             [event.target.name]: event.target.value,
@@ -109,7 +85,12 @@ class InputTimes extends Component{
 
     handleOnDelete(event){
         event.preventDefault()
+            debugger
         this.props.deleteTime(this.props.user.id, this.state.capturedDate, this.state.clockIn, this.state.clockOut)
+        this.setState({ 
+            clockIn: '',
+            clockOut: ''
+        })
     }
 
     handleOnUpdate(event){
