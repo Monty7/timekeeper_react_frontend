@@ -1,10 +1,6 @@
 import BASEURL from "../baseUrl"
 
 export const deleteTime = (userID, captured_date, deleted_clock_in, deleted_clock_out) => {
-    // let captured_date = e.target.parentElement.parentElement.children[0].innerText;
-    // let deleted_clock_in = e.target.parentElement.parentElement.children[2].value;
-    // let deleted_clock_out = e.target.parentElement.parentElement.children[4].value;
-    debugger
     return dispatch => {
         fetch(`${BASEURL}/user_times/${captured_date}`, {
             method: "DELETE",

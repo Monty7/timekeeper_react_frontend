@@ -3,18 +3,10 @@ import InputTimes from '../components/InputTimes'
 import TimeTotal from '../components/TimeTotal'
 import LogoutInput from '../components/LogoutInput'
 import { connect } from 'react-redux'
-//import {checkForUser} from '../actions/login'
 
 //Component Did mount to fetch to the database
 
 class CalendarContainer extends Component{
-
-    // state = {
-    //     total: 0
-    // }
-
-
-    
     
     renderInputs(){
         let inputs = []
@@ -26,16 +18,15 @@ class CalendarContainer extends Component{
 
 
     render(){ 
-        // if(this.props.user){
-        //     console.log(this.calcTime(this.props.user))
-        // }
-      //  
+ 
         return(
         <React.Fragment>
             <LogoutInput/>
             <div className="container">
                 <TimeTotal/>
+                <div className="calendar">
                 {this.renderInputs()}
+                </div>
             </div>
         </React.Fragment>
         )
