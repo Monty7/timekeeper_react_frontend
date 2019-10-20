@@ -17,12 +17,8 @@ export const updateTime = (userID, captured_date, updated_clock_in, updated_cloc
                 return res.json();
             })
             .then((updated_timeObj) => {
-                // if(updated_data.err_message){
-                //     alert(updated_data.err_message)
-                // }else{
-                //  calcTime(updated_data)
-            // }   
-            return dispatch({type: 'UPDATE_TIME', payload: updated_timeObj})
+                alert("Timestamp has been updated.");
+                return dispatch({type: 'UPDATE_TIME', payload: updated_timeObj})
         })
     }
 }

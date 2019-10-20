@@ -121,12 +121,10 @@ class InputTimes extends Component{
                     <label>Clock Out</label>
                     <input type="time" value={this.state.clockOut} name="clockOut" placeholder="Clock Out" className="clockOut" onChange={(event) => this.handleOnChange(event)} />
 
-                    <div>
-                                     
-                    <AddButton addTimes={(event) => this.handleOnAdd(event)} /> 
-                    <UpdateButton updateTimes={(event) => this.handleOnUpdate(event)}/>
-                    <DeleteButton deleteTimes={(event) => this.handleOnDelete(event)}/>                                    
-                        
+                    <div className="btnActions">                      
+                        <AddButton addTimes={(event) => this.handleOnAdd(event)} /> 
+                        <UpdateButton updateTimes={(event) => this.handleOnUpdate(event)}/>
+                        <DeleteButton deleteTimes={(event) => this.handleOnDelete(event)}/>                                    
                     </div>
                 </form>
            </div>

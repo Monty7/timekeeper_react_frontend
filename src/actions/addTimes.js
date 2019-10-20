@@ -24,8 +24,8 @@ export const addTime = (userID, clock_in, clock_out, captured_date) => {
             if (userObj.err_message){
                 alert(userObj.err_message)
             } else {
-                return dispatch({type: 'ADD_TIME', payload: userObj})
-            
+                alert("Timestamp is now added.");
+                return dispatch({type: 'ADD_TIME', payload: userObj}) 
         }
         })
     }

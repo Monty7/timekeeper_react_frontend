@@ -17,7 +17,6 @@ class App extends Component {
      
         if(userID){
           this.props.checkForUser(userID, this.props.history)
-          // console.log(userID)
         }else{
             return this.props.history.push('/')
         }

@@ -4,7 +4,6 @@ import TimeTotal from '../components/TimeTotal'
 import LogoutInput from '../components/LogoutInput'
 import { connect } from 'react-redux'
 
-//Component Did mount to fetch to the database
 
 class CalendarContainer extends Component{
     

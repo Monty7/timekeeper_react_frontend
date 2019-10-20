@@ -21,16 +21,10 @@ class LoginForm extends Component{
     
     handleSubmit(event){
         event.preventDefault()
-        // this.setState({
-        //     user: ''
-        // })
-       // console.log(this.state.user)
         this.props.fetchUser({name: this.state.name}, this.props.history)
     }
 
 render(){
-    //console.log("I'm rendered component");
-   // console.log(this.props);
     
     return(
         <div>
