@@ -1,9 +1,6 @@
 import BASEURL from "../baseUrl"
 
 export const updateTime = (userID, captured_date, updated_clock_in, updated_clock_out) => {
-    // let captured_date = e.target.parentElement.parentElement.children[0].innerText;
-    // let updated_clock_in = e.target.parentElement.parentElement.children[2].value;
-    // let updated_clock_out = e.target.parentElement.parentElement.children[4].value;
     return dispatch => {
         fetch(`${BASEURL}/user_times/${captured_date}`, {
             method: "PATCH",
