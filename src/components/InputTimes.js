@@ -7,15 +7,7 @@ import {addTime} from '../actions/addTimes'
 import {deleteTime} from '../actions/deleteTimes'
 import {updateTime} from '../actions/updateTimes'
 
-//GOAL: Create a user time 
-//1. Change local state with user input to collect times
-//2. On submit, send times to backend using an actionCreator
-//3. With return object of a UserTime, dispatch an action that puts the userTime object in the user's usertimes. 
-//Alternatives: send back the entire user obj from the api and reset the user obj in the redux that way 
-
-
 class InputTimes extends Component{
-
 
     state = {
         clockIn: '',
@@ -72,7 +64,6 @@ class InputTimes extends Component{
         }
     }
     
-
 
     handleOnChange(event){
         this.setState({ 

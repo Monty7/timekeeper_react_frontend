@@ -1,17 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-
-
 const TimeTotal = (props) => {
 
     const timeDifferenceInADay = (start, end) => {
         start = start.split(":");
         end = end.split(":");
-    
+
+        end[0] = end[0] === "00" ? "24" : end[0]
+
         let startTime = new Date(0, 0, 0, start[0], start[1], 0);
         let endTime = new Date(0, 0, 0, end[0], end[1], 0);
-    
+        //console.log(Math.abs(startTime.getTime() - endTime.getTime()))
         return Math.abs(startTime.getTime() - endTime.getTime()); //seconds
     }
     
@@ -19,13 +19,14 @@ const TimeTotal = (props) => {
         console.log(data)
         let totalMonthTime = data.user_times.reduce((total, stamp) => {
             //debugger
-            return total + timeDifferenceInADay(stamp.clock_in.slice(11, 16), stamp.clock_out.slice(11, 16))
+            console.log(stamp.clock_out.slice(11, 16))
+            return total + (timeDifferenceInADay(stamp.clock_in.slice(11, 16), stamp.clock_out.slice(11, 16)))
         }, 0)
         return convertTime(totalMonthTime);
     }
     
     const convertTime = (timeSeconds) => {
-        let seconds, minutes, hours = 0
+        let seconds, minutes, twelveHours, hours = 0
         seconds = (timeSeconds / 1000) % 60
         minutes = (timeSeconds / (1000*60) % 60)
         hours = Math.floor((timeSeconds / (1000*60*60)) % 24)

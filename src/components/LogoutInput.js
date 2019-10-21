@@ -4,8 +4,6 @@ import { connect } from 'react-redux'
 import {logoutUser } from '../actions/login'
 
 const LogoutInput = (props) => {
-    console.log(props.user)
-    //debugger
     return (
         <div id="welcomeUser">
             {/* the && is like  aternary operator but just for two things. If the first is true, then do the second. Otherwise do nothing*/}

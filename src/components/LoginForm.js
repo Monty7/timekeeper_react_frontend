@@ -4,7 +4,6 @@ import Header from './Header'
 import {fetchUser} from '../actions/login'
 import { connect } from 'react-redux'
 import { withRouter } from "react-router-dom"
-import {checkForUser} from '../actions/login'
 
 
 class LoginForm extends Component{

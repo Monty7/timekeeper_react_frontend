@@ -9,10 +9,7 @@ export const fetchUser = (nameObjFromState, history) => {
             body: JSON.stringify(nameObjFromState)
         })
         .then(resp => resp.json())
-       .then(userObj => {
-           console.log(userObj)
-           return userObj
-       })
+
         .then(userObj => {
             dispatch({type: 'FETCH_USER', payload: userObj})
             localStorage.setItem('loggedInUserID', userObj.id)
