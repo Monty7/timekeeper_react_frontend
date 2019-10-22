@@ -47,3 +47,18 @@ const mapStateToProps = (state) => ({
     //will be able to utilize this.props.user to display in the form
 })
 export default connect(mapStateToProps, {fetchUser})(withRouter(LoginForm))
+
+//const connect = (arg1, arg2) => {
+    //connect gets access to the Redux store state through a context API 
+    //let state = this.context.state 
+    //and then executes the first argument and passes that state to it 
+    //arg1(state) << mapStateOProps
+    //connect also gets access to dispatch through a context API
+    //bind all actions in arg2 to dispatch << mapDispatchToProps
+    //the return value of connect 
+    //is another function that accepts an argument of a coponent 
+    //and it will add the selected info from the state we chose in mapstateoprops and the bound actionCreators to that component
+    //return function(component){
+        //component({propsfrommapStateToPropsmapDispatchToPropsgohere})
+    //}
+//}

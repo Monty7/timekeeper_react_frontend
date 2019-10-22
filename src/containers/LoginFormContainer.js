@@ -7,7 +7,7 @@ class LoginFormContainer extends Component{
     render(){
         return(
             
-                <LoginForm />
+                <LoginForm/>
            
         )
     }

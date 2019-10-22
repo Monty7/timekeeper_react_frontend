@@ -4,11 +4,16 @@ import { connect } from 'react-redux'
 const TimeTotal = (props) => {
 
     const timeDifferenceInADay = (start, end) => {
+
+        
         start = start.split(":");
         end = end.split(":");
 
         end[0] = end[0] === "00" ? "24" : end[0]
-
+        if(end[0] < start[0]){
+            alert("Clock In time must be before the clock out time.")
+            return 0
+        }
         let startTime = new Date(0, 0, 0, start[0], start[1], 0);
         let endTime = new Date(0, 0, 0, end[0], end[1], 0);
         //console.log(Math.abs(startTime.getTime() - endTime.getTime()))
@@ -37,7 +42,7 @@ const TimeTotal = (props) => {
     return (
         <header>
             <h3>Calculate time in a month
-                   Total: <span id="currentTime">{props.user && calcTime(props.user) }</span>
+                   total: <span id="currentTime">{props.user && calcTime(props.user) }</span>
             </h3>
         </header>
     )
