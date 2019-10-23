@@ -11,14 +11,14 @@ class LoginForm extends Component{
         name: ''
     }
 
-    handleOnChange(event){
+    handleOnChange = (event) => {
       
         this.setState({
             [event.target.name]: event.target.value
         }) 
     }
     
-    handleSubmit(event){
+    handleSubmit = (event) => {
         event.preventDefault()
         this.props.fetchUser({name: this.state.name}, this.props.history)
     }
@@ -28,10 +28,10 @@ render(){
     return(
         <div>
             <Header />
-            <form onSubmit={(event) => this.handleSubmit(event) }>
+            <form onSubmit={this.handleSubmit}>
                 <div id="sign_up_in">
                 <div id="sign_up">
-                    <input type="text" name="name" id="sign_in_user" placeholder="Log In" onChange={(event) => this.handleOnChange(event)} />
+                    <input type="text" name="name" id="sign_in_user" placeholder="Log In" onChange={this.handleOnChange} />
                     <LoginButton id="submit_user" />
             
                 </div>
@@ -47,6 +47,8 @@ const mapStateToProps = (state) => ({
     //will be able to utilize this.props.user to display in the form
 })
 export default connect(mapStateToProps, {fetchUser})(withRouter(LoginForm))
+//we need to pass our actionCreators through connect so that they're bound to Redux's dispatch , and when they execute they can talk to the store.
+//Our plain action creators that we wrote in a separate file do not talk to Redux on their own 
 
 //const connect = (arg1, arg2) => {
     //connect gets access to the Redux store state through a context API 

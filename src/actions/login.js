@@ -1,6 +1,16 @@
 import BASEURL from "../baseUrl"
 
 export const fetchUser = (nameObjFromState, history) => {
+    //thunk allows us to return functions instead of plain objects
+    //put async logic inside our action creators
+    //allow us to call dispatch inside our actionCreators by automatically passing dispatch to the returned function 
+    //the main benefit of thunk is so that our async logic that will ultimately change redux store's state is in our actionCreator files
+    //rather than taking up space in the components where the results won't effect local state at all 
+    //in other words, async logic that changes local state is fine/belongs in components themselves 
+    //async logic that changes redux store's state should go in the action creators
+    //it's just separation of responsibility that thunk helps make possible 
+
+    //to be async is to deal with promises. IE fetch requests 
     //console.log(nameObjFromState)
     return dispatch => {
         fetch(BASEURL+'/users', {
