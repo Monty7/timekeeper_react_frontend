@@ -6,7 +6,7 @@ export default function manageTime( state = initialState, action){
     console.log(state, action)  //reducers updates the state sent from the actions
     switch(action.type){
         case "ADD_TIME":
-            console.log(state)
+           // console.log(state)
             return {user: action.payload}
         
         case "UPDATE_TIME":
@@ -22,7 +22,7 @@ export default function manageTime( state = initialState, action){
 
         case "FETCH_USER":
             //console.log('user has been fetch!')
-           // console.log(state)
+            console.log(state)
             return {user: action.payload}  //makes a copy of state and modify the user value inside the copy. this comes from the login action returned by the fetch
                                 //{type: 'FETCH_USER', payload: user}
 

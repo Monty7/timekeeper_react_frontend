@@ -16,7 +16,9 @@ const TimeTotal = (props) => {
     }
     
     const calcTime = (data) => {
+        if(data){
         console.log(data)
+        }
         let totalMonthTime = data.user_times.reduce((total, stamp) => {
             //debugger
             return total + timeDifferenceInADay(stamp.clock_in.slice(11, 16), stamp.clock_out.slice(11, 16))
