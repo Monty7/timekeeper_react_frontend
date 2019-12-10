@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/timekeeper/static/css/main.a3128eb6.chunk.css",
+    "main.js": "/timekeeper/static/js/main.6d3e42ac.chunk.js",
+    "main.js.map": "/timekeeper/static/js/main.6d3e42ac.chunk.js.map",
+    "runtime-main.js": "/timekeeper/static/js/runtime-main.548aa9b1.js",
+    "runtime-main.js.map": "/timekeeper/static/js/runtime-main.548aa9b1.js.map",
+    "static/js/2.5833189d.chunk.js": "/timekeeper/static/js/2.5833189d.chunk.js",
+    "static/js/2.5833189d.chunk.js.map": "/timekeeper/static/js/2.5833189d.chunk.js.map",
+    "index.html": "/timekeeper/index.html",
+    "precache-manifest.a055d2ef746668ce58a7d7df654a90f8.js": "/timekeeper/precache-manifest.a055d2ef746668ce58a7d7df654a90f8.js",
+    "service-worker.js": "/timekeeper/service-worker.js",
+    "static/css/main.a3128eb6.chunk.css.map": "/timekeeper/static/css/main.a3128eb6.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.548aa9b1.js",
+    "static/js/2.5833189d.chunk.js",
+    "static/css/main.a3128eb6.chunk.css",
+    "static/js/main.6d3e42ac.chunk.js"
+  ]
+}
