@@ -19,11 +19,14 @@ export const fetchUser = (nameObjFromState, history) => {
             body: JSON.stringify(nameObjFromState)
         })
         .then(resp => resp.json())
-
         .then(userObj => {
-            dispatch({type: 'FETCH_USER', payload: userObj})
-            localStorage.setItem('loggedInUserID', userObj.id)
-            history.push('/calendar')
+            if(userObj.err_message){
+                alert(userObj.err_message)
+            }else{
+                dispatch({type: 'FETCH_USER', payload: userObj})
+                localStorage.setItem('loggedInUserID', userObj.id)
+                history.push('/calendar')
+            }
         })
     }
     
