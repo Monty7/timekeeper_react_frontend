@@ -38,9 +38,7 @@ class InputTimes extends Component{
 
     findDay = () => {
         if (this.props.user){
-           //. debugger
             let foundDayTime = this.props.user.user_times.find(ut => parseInt(ut.date_of_times) === this.state.capturedDate)  //compare day from props to day from state
-        //  debugger
             //checking to see if the user object in props has a user_time that matches this component's day 
             if (foundDayTime && foundDayTime.clock_in.slice(11, 16) !== this.state.clockIn) {
                 return foundDayTime
@@ -89,16 +87,6 @@ class InputTimes extends Component{
         event.preventDefault()
         this.props.updateTime(this.props.user.id, this.state.capturedDate, this.state.clockIn, this.state.clockOut)        
     }
-
-    // findIfTimeExistByDay(){
-    //     if (this.props.user){
-            
-            
-    //     return this.props.user.usertimes.find(day => day.date_of_times === this.props.day)
-            
-    //     }
-    // }
-
     render(){
      
         return(
