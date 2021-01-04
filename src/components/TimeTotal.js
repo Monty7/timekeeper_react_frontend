@@ -16,15 +16,12 @@ const TimeTotal = (props) => {
         }
         let startTime = new Date(0, 0, 0, start[0], start[1], 0);
         let endTime = new Date(0, 0, 0, end[0], end[1], 0);
-        //console.log(Math.abs(startTime.getTime() - endTime.getTime()))
         return Math.abs(startTime.getTime() - endTime.getTime()); //seconds
     }
     
     const calcTime = (data) => {
         console.log(data)
         let totalMonthTime = data.user_times.reduce((total, stamp) => {
-            //debugger
-            console.log(stamp.clock_out.slice(11, 16))
             return total + (timeDifferenceInADay(stamp.clock_in.slice(11, 16), stamp.clock_out.slice(11, 16)))
         }, 0)
         return convertTime(totalMonthTime);
@@ -35,7 +32,6 @@ const TimeTotal = (props) => {
         seconds = (timeSeconds / 1000) % 60
         minutes = (timeSeconds / (1000*60) % 60)
         hours = Math.floor((timeSeconds / (1000*60*60)) % 24)
-     //twelveHours = Math.floor((timeSeconds / (1000*60*60)) % 12);
        return `${hours} HOURS, ${minutes} MINUTES`;
      
     }
